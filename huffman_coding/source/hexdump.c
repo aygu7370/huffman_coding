@@ -37,22 +37,6 @@ static char sendNibble(uint8_t nibble){
 }
 
 /******************************************************************************************
- * @name byteToHexStr
- *
- * @param in
- *  asciiValue - ASCII value to be converted in HEX.
- *
- * @description Function convert ASCII value in HEX.
- * ***************************************************************************************/
-static void byteToHexStr(uint8_t asciiValue){
-    uint8_t fNibble, sNibble;
-    sNibble = (asciiValue & 0xF);
-    fNibble = ((asciiValue & 0xF0) >> 4);
-    sendNibble(fNibble);
-    sendNibble(sNibble);
-}
-
-/******************************************************************************************
  * @name displayHexDump
  *
  * @param in
@@ -98,9 +82,9 @@ void displayHexDump(const void *buf, size_t nBytes){
 			hexString[hexIndex++] = ' ';
 			hexString[hexIndex++] = ' ';
 			charsOnALine = 0;
+
 			printf("%s", hexString);
 			hexIndex = 0;
-			memset(hexString, 0, HEX_DUMP_LENGTH);
 		}
 
 		hexString[hexIndex++] = sendNibble((((uint8_t)(*startingLoc) & 0xF0) >> 4));
@@ -110,15 +94,15 @@ void displayHexDump(const void *buf, size_t nBytes){
 		startingLoc++;
 		charsOnALine++;
 	}
-//	//move cursor to the next line
-//	hexString[hexIndex++] = '\r';
-//	hexString[hexIndex++] = '\n';
+	//move cursor to the next line
+	hexString[hexIndex++] = '\r';
+	hexString[hexIndex++] = '\n';
+	//string end character
+	hexString[hexIndex++] = '\0';
 
-	if(hexIndex > 0){
-		printf("%s", hexString);
-		hexIndex = 0;
-		memset(hexString, 0, HEX_DUMP_LENGTH);
-	}
+	//print the remaining bytes
+	printf("%s", hexString);
+	hexIndex = 0;
 
 }
 

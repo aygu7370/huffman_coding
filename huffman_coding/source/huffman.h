@@ -17,6 +17,7 @@
 //HUFFMAN encoded minimum & maximum lengths
 #define HUFFMAN_MIN_LENGTH              							(2)
 #define HUFFMAN_MAX_LENGTH              							(11)
+#define HUFFMAN_END_CODE_SYMBOL                                     ('\0')
 
 //Huffman table: symbol, encoded messages and length of encoded messages
 typedef struct {
@@ -24,6 +25,15 @@ typedef struct {
 	uint32_t code;
 	int nBits;
 } encode_huffmanCode_t;
+
+typedef struct {
+	uint8_t symbol;
+	char code[20];
+	int nBits;
+} decode_huffmanCode_t;
+
+
+
 
 /**************************************************************************
  * @name encodeHuffman
@@ -38,5 +48,18 @@ typedef struct {
  * 				message.
  *************************************************************************/
 int encodeHuffman(const char* msg, uint8_t* buffer, size_t nBytes);
+
+
+/**************************************************************************
+ * @name decodeHuffman
+ *
+ * @param in
+ * 	msg: message string to store the decoded bytes
+ * 	buffer: encoded message buffer
+ * 	nBytes: number of bytes to decode
+ *
+ * @description Refer huffman.h for more information.
+ *************************************************************************/
+void decodeHuffman(uint8_t* buffer, size_t nBytes, char * msg);
 
 #endif /* SOURCE_HUFFMAN_H_ */

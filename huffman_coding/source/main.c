@@ -7,19 +7,21 @@
 #include "sysclock.h"
 #include "uart.h"
 #include "test_cbfifo.h"
+#include "test_huffman.h"
 
 
 
 int main(void)
 {
 	//clock initialization given
-
 	sysclock_init();
 
 	//uart initialization call
 	uart0Init(BAUD_RATE);
 
 #ifdef DEBUG
+	//test the Huffman implementation
+	testHuffman();
 	//test the FIFO implementation
 	test_FIFO();
 #endif

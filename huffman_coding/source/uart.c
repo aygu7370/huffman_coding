@@ -48,7 +48,7 @@
 #define STOP_CONFIG																	(1)
 #endif
 
-#define TEMP_BUFFER_SIZE															(640)
+#define TEMP_BUFFER_SIZE															(256)
 //initialize RX, Tx buffer with the default parameters
 cbfifo_t rxBuffer, txBuffer;
 
