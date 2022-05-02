@@ -320,7 +320,7 @@ bool test_cbfifo_dequeue(cbfifo_t *testFifo){
  *
  * This function test the cbfifo for multiple scenarios.
  * ***********************************************************/
-void test_FIFO(){
+void testFIFO(){
 
 	cbfifo_t testFifo;
 	//initialize fifo instance

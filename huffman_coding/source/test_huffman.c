@@ -45,9 +45,9 @@ char huffmanInputs[NUMBER_OF_TEST_CASES][BUFFER_LENGTH+1] = {
     "",
     "1234567891011121314151617",
     ":::::::::::::::::::::::::::::::::::",
-    "ahahhvdfbkrngrpgkfnjkd-lnfdjbfdgeri9gj",
-    "KL25z -  a 32-bit micro-controller"
-    };
+    "ahahhvdfbkr-ngrpgkfnjkd-lnfdjbf",
+    "KL25z -  a 32-bit micro-controller",
+};
 
 
 /*****************************************************************************************
@@ -75,4 +75,16 @@ void testHuffman(){
         //compare the input and output strings
         assert(strncmp(outputsString, huffmanInputs[i], strlen(huffmanInputs[i])) == 0);
     }
+}
+
+/*****************************************************************************************
+ * @testHuffman
+ *
+ * @description Refer to test_huffman.h for more details.
+ ****************************************************************************************/
+void analyzeHuffmanEncoding(){
+	for(int i = 0; i<NUMBER_OF_TEST_CASES; i++){
+		printf("%s\r\n", huffmanInputs[i]);
+	}
+	printf("Compare");
 }

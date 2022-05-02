@@ -17,7 +17,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define FIFO_CAPACITY                                                     (512)
+#define FIFO_CAPACITY                                                     (256)
 
 /*****************************************************************************
  *  Structure has the metadata for circular buffer.
@@ -30,7 +30,7 @@ typedef struct cbfifo{
     uint16_t rptr;
     uint16_t wptr;
     uint16_t nElements;
-    bool bufferFullFlag;
+    volatile bool bufferFullFlag;
 } cbfifo_t;
 
 /*******************************************************************************

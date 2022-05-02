@@ -14,6 +14,7 @@
 int main(void)
 {
 	//clock initialization given
+
 	sysclock_init();
 
 	//uart initialization call
@@ -23,14 +24,13 @@ int main(void)
 	//test the Huffman implementation
 	testHuffman();
 	//test the FIFO implementation
-	test_FIFO();
+	testFIFO();
 #endif
-
 
 	printf("ECEN5813 Principles of Embedded Software Final Project\r\n");
 	// enter infinite loop
   while (1) {
-	  printf("> ");
+//	  printf("> ");
 	  userInputProcessing();
   }
 

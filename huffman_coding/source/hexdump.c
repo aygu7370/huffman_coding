@@ -18,14 +18,14 @@
 
 
 /******************************************************************************************
- * @name sendNibble
+ * @name getNibble
  *
  * @param in
  *  nibble - nibble to be displayed on Serial terminal.
  *
  * @description Function returns the nibble in hex.
  * ***************************************************************************************/
-static char sendNibble(uint8_t nibble){
+static char getNibble(uint8_t nibble){
     char ch;
     if ((nibble <= 9)){
         ch = (nibble + '0');
@@ -36,6 +36,7 @@ static char sendNibble(uint8_t nibble){
     return ch;
 }
 
+char hexString[HEX_DUMP_LENGTH];
 /******************************************************************************************
  * @name displayHexDump
  *
@@ -47,9 +48,10 @@ static char sendNibble(uint8_t nibble){
  * ***************************************************************************************/
 void displayHexDump(const void *buf, size_t nBytes){
 	//clear the buffer
-	char hexString[HEX_DUMP_LENGTH];
+
 	memset(hexString, 0, HEX_DUMP_LENGTH);
 	int hexIndex = 0;
+	int isPrint = 0;
 	if(nBytes > MAX_HEXDEMP_LIMIT_IN_BYTES){
 		//requested memory is outside the limit; print till MAX_HEXDEMP_LIMIT_IN_BYTES and ignore the rest for now.
 		nBytes = MAX_HEXDEMP_LIMIT_IN_BYTES;
@@ -67,15 +69,15 @@ void displayHexDump(const void *buf, size_t nBytes){
 			hexString[hexIndex++] = '\n';
 
 			//print starting location of the new line in the format 0000_0000
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0xF0000000) >> 28);
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0x0F000000) >> 24);
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0x00F00000) >> 20);
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0x000F0000) >> 16);
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0xF0000000) >> 28);
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x0F000000) >> 24);
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x00F00000) >> 20);
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x000F0000) >> 16);
 			hexString[hexIndex++] = '_';
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0x0000F000) >> 12);
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0x00000F00) >> 8);
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0x000000F0) >> 4);
-			hexString[hexIndex++] = sendNibble(((uint32_t)(startingLoc) & 0x0000000F));
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x0000F000) >> 12);
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x00000F00) >> 8);
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x000000F0) >> 4);
+			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x0000000F));
 
 
 			//2 spaces in between address and data
@@ -83,12 +85,22 @@ void displayHexDump(const void *buf, size_t nBytes){
 			hexString[hexIndex++] = ' ';
 			charsOnALine = 0;
 
-			printf("%s", hexString);
-			hexIndex = 0;
+
+			//store till 2 lines and print
+			if(isPrint == 0){
+				isPrint++;
+			}
+			else{
+				hexString[hexIndex++] = '\0';
+				printf("%s", hexString);
+				hexIndex = 0;
+				isPrint = 0;
+			}
+
 		}
 
-		hexString[hexIndex++] = sendNibble((((uint8_t)(*startingLoc) & 0xF0) >> 4));
-		hexString[hexIndex++] = sendNibble(((uint8_t)(*startingLoc) & 0x0F));
+		hexString[hexIndex++] = getNibble((((uint8_t)(*startingLoc) & 0xF0) >> 4));
+		hexString[hexIndex++] = getNibble(((uint8_t)(*startingLoc) & 0x0F));
 		hexString[hexIndex++] = ' ';
 
 		startingLoc++;
@@ -103,6 +115,7 @@ void displayHexDump(const void *buf, size_t nBytes){
 	//print the remaining bytes
 	printf("%s", hexString);
 	hexIndex = 0;
+
 
 }
 

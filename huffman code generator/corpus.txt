@@ -1,0 +1,47 @@
+ECEN 5813 - Principles of Embedded Software Final Project\r\n 
+Clock initialized\r\n
+Uart initialized\r\n
+\0\r\n
+ECEN5813 Principles of Embedded Software Final Project\r\n
+> author\r\n
+Ayush Gupta\r\n
+> Author\r\n
+Ayush Gupta\r\n
+> hexdump 0 128\r\n
+Invalid Command: hexdump\r\n
+> dump 0 64\r\n
+\r\n
+0000_0000  00 30 00 20 D5 00 00 00 43 01 00 00 89 09 00 00\r\n
+0000_0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n
+0000_0020  00 00 00 00 00 00 00 00 00 00 00 00 47 01 00 00\r\n
+0000_0030  00 00 00 00 00 00 00 00 49 01 00 00 4B 01 00 00\r\n
+> dump 0 128\r\n
+I  00 30 00 20 D5 00 00 00 43 01 00 00 89 09 00 00\r\n
+0000_0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n
+0000_0020  00 00 00 00 00 00 00 00 00 00 00 00 47 01 00 00\r\n
+0000_0030  00 00 00 00 00 00 00 00 49 01 00 00 4B 01 00 00\r\n
+> dump 0 128\r\n
+I>\r\n
+>\r\n
+> dump 0 64\r\n
+\r\n
+0000_0000  00 30 00 20 D5 00 00 00 43 01 00 00 89 09 00 00\r\n
+0000_0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\r\n\n
+0000_0020  00 00 00 00 00 00 00 00 00 00 00 00 47 01 00 00\r\r\n\n
+0000_0030  00 00 00 00 00 00 00 00 49 01 00 00 4B 01 00 00\r\r\n\n
+> print\r\n
+Invalid Command: print\r\n
+> printz\r\n
+Invalid Command: printz\r\n
+> info\r\n
+ERR: BUILD_COMMIT is not defined\r\n
+ERR: HOSTNAME is not defined\r\n
+ERR: DATE_TIME is not defined\r\n
+Version 1.0 built on HOSTNAME at DATE_TIME Commit BUILD_COMMIT\r\n
+> abcdefghijklmnopqrstuvwxyz\r\n
+Invalid Command: a,bcdefghijklmnopqrstuvwxyz\r\n
+>\r\n
+> ABCDEFGHIJKLMNOPQUVWXYZ\r\n
+Invalid Command: ABCDEFGHIJKLMNOPQRSTUVWX,YZ\r\n
+1234567890
+!@#$%^&*()[]

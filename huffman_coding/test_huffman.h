@@ -22,4 +22,12 @@
  ****************************************************************************************/
 void testHuffman();
 
+
+/*****************************************************************************************
+ * @testHuffman
+ *
+ * @description send a list of strings on serial port to analyze the HUFFMAN coding.
+ ****************************************************************************************/
+void analyzeHuffmanEncoding();
+
 #endif /* TEST_HUFFMAN_H_ */

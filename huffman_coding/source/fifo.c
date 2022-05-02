@@ -100,7 +100,14 @@ int QWriteByte(uint8_t value, cbfifo_t* cbfifo){
     }
     else{
         //printf("Buffer is full\r\n");
-        return -1;
+    	while(!cbfifo->bufferFullFlag){};
+    	//if not full add the value in the buffer and return success as status code and increment wptr
+		cbfifo->data[cbfifo->wptr] = value;
+		NVIC_DisableIRQ(UART0_IRQn);
+		cbfifo->wptr = incrementPtr(cbfifo->wptr);
+		NVIC_EnableIRQ(UART0_IRQn);
+		cbfifo->nElements++;
+//        return -1;
     }
 
     //check if the buffer is full and if it is full assign the bufferFullFlag as true

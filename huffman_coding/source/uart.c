@@ -125,7 +125,7 @@ int __sys_write(int handle, char *buf, int size){
 		return size;
 	}
 
-	uint8_t data[100];
+	uint8_t data[256];
 
 	int nBytesStored = 0;
 	//wait if the TX Buffer is full.
@@ -136,11 +136,12 @@ int __sys_write(int handle, char *buf, int size){
 	int bytesToStore = encodeHuffman(buf, data, size);
 	//store data in TX Buffer
 	nBytesStored = cbfifo_enqueue(data, bytesToStore, &txBuffer);
-//	nBytesStored = cbfifo_enqueue(buf, size, &txBuffer);
+
+
 	if(!(UART0->C2 & UART0_C2_TIE_MASK)){
 		UART0->C2 |= UART0_C2_TIE(1);
 	}
-	if(nBytesStored < size){
+	if(nBytesStored < bytesToStore){
 		return -1;
 	}
 	return 0;
@@ -249,8 +250,6 @@ void userInputProcessing(void){
 			UART0->C2 |= UART0_C2_TIE(1);
 		}
 		if((ch == '\r') || (ch == '\n')){
-//			putchar('\r');
-//			putchar('\n');
 			break;
 		}
 
@@ -258,12 +257,10 @@ void userInputProcessing(void){
 		if (ch != BACKSPACE_ASCII_VALUE){
 			userInput[i] = ch;
 			i++;
-//			putchar(ch);
 		}
 		else{
 			if(i != 0){
 				i--;
-//				putchar(ch);
 			}
 		}
 	}

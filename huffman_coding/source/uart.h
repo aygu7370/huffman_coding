@@ -14,7 +14,7 @@
 #define _TEST_CBFIFO_H_
 
 
-#define	BAUD_RATE		  															(38400)
+#define	BAUD_RATE		  															(115200)
 
 /*****************************************************************************************/
 /******************************** Functions Prototypes ***********************************/
@@ -65,4 +65,6 @@ void userInputProcessing(void);
  * @description: Refer uart.h for more detail.
  *****************************************************************************************/
 void serialOut(void *buf, size_t count);
+
+
 #endif

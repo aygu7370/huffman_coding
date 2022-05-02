@@ -32,11 +32,11 @@ Following are the software modules required to realize the proposed solution:
 ## Software Flow Control
 1. KL25z: Encode the outgoing messages using HUFFMAN coding technique. The string is currently being compressed in the ```__sys_write``` function associated RedLib library. 
    
-   ![kl25z_software_flow](Screenshots/pes1.png)
+   ![kl25z_software_flow](screenshots/pes1.png)
    
 2. PC Front: On the serial front the data is being decompressed using the HUFFMAN TABLE (symbol, code & number of bits). If ```HUFFMAN_END_SYMBOL``` ('\0') is detected, the remaining bits are discarded. 
    
-   ![PC_software_flow](Screenshots/pes2.png)
+   ![PC_software_flow](screenshots/pes2.png)
 
 
 ### Things to remember

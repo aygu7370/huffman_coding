@@ -26,7 +26,7 @@
  *
  * @description huffman characters, encoded bits and length of encoded bits.
  *************************************************************************/
-static encode_huffmanCode_t encodeHuffmanCode[] = {
+encode_huffmanCode_t encodeHuffmanCode[] = {
 		{' ' , 0b00         ,2 },
 		{'0' , 0b10         ,2 },
 		{'\r', 0b11010      ,5 },

@@ -16,9 +16,9 @@
 
 
 /**************************************************************
- * @name test_FIFO
+ * @name testFIFO
  *
  * This function test the cbfifo for multiple scenarios.
  * ***********************************************************/
-void test_FIFO();
+void testFIFO();
 
