@@ -76,12 +76,17 @@ Initial scope of this project was to implement the Huffman algorithm. As that pa
       ![cmd1](Screenshots/compare_cmd.jpg)
 
 ### Code Explanantion
-![code_explanation](Documentation/code_explanation.mp4)
+
+https://user-images.githubusercontent.com/89823539/166399931-e08a477d-55db-49d2-a3ed-e65b5351f48d.mp4
 
 ### Demo
-![demo](Documentation/project_working.mp4)
 
-![stats](Documentation/stats_display.mp4)
+https://user-images.githubusercontent.com/89823539/166399957-317955ea-bc14-4a01-a92c-930349ffb0e4.mp4
+
+### Stats 
+https://user-images.githubusercontent.com/89823539/166399960-c058b555-ed9f-4b0e-b59c-b196044652ef.mp4
+
+
 
 
 ### Things to remember
