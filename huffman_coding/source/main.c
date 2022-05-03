@@ -14,7 +14,6 @@
 int main(void)
 {
 	//clock initialization given
-
 	sysclock_init();
 
 	//uart initialization call
@@ -30,7 +29,6 @@ int main(void)
 	printf("ECEN5813 Principles of Embedded Software Final Project\r\n");
 	// enter infinite loop
   while (1) {
-//	  printf("> ");
 	  userInputProcessing();
   }
 

@@ -8,7 +8,7 @@
  *********************************************************************************/
 
 #include "read_serial.h"
-
+#include <stdio.h>
 #define MIN(X, Y) 												(((X) < (Y)) ? (X) : (Y))
 #define MASK(X)													((1<<X) - 1)
 #define INVALID_HUFFMAN_SYMBOL                                  (0xFFFFFFFF)
@@ -23,6 +23,7 @@ typedef struct {
 	char code[20];
 	int nBits;
 } decodeHuffmanCode_t;
+
 
 /**************************************************************************
  * @name decodehuffmanCode
@@ -157,6 +158,17 @@ static uint32_t getHuffmanSymbol(uint32_t code, size_t len){
         }
     }
     return INVALID_HUFFMAN_SYMBOL;
+}
+
+/**************************************************************************
+ * @name getStats
+ * 
+ * @description get Huffman stats.
+ *************************************************************************/
+void getStats(){
+    printf("Number of received bytes: %d\r\n", countBytes);
+    printf("Uncompressed message length in bytes: %d\r\n", countDecodedBytes);
+    printf("Percentage compression: %0.2f\r\n", ((countBytes*100)/(float)countDecodedBytes));
 }
 
 /**************************************************************************
@@ -324,7 +336,6 @@ void decodeMessages(int serialPort, char* msg, int msgLen){
                         //break all loops and wait for next message
                         endDecoding = true;
                         return;
-                        break;
                     }
                     else if(getCharFromHuffmanCode != INVALID_HUFFMAN_SYMBOL){
                         //store the decoded character in the msg buffer

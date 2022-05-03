@@ -13,7 +13,7 @@
 
 #define BYTES_ON_A_SINGLE_LINE														(16)
 #define MAX_HEXDEMP_LIMIT_IN_BYTES													(640)
-#define HEX_DUMP_LENGTH																(256)
+#define HEX_DUMP_LENGTH																(496)
 
 
 
@@ -51,7 +51,6 @@ void displayHexDump(const void *buf, size_t nBytes){
 
 	memset(hexString, 0, HEX_DUMP_LENGTH);
 	int hexIndex = 0;
-	int isPrint = 0;
 	if(nBytes > MAX_HEXDEMP_LIMIT_IN_BYTES){
 		//requested memory is outside the limit; print till MAX_HEXDEMP_LIMIT_IN_BYTES and ignore the rest for now.
 		nBytes = MAX_HEXDEMP_LIMIT_IN_BYTES;
@@ -63,6 +62,10 @@ void displayHexDump(const void *buf, size_t nBytes){
 
 
 	while(startingLoc < endLoc){
+		//break if hexdump limit reached
+		if(hexIndex >= HEX_DUMP_LENGTH){
+			break;
+		}
 		if((charsOnALine == BYTES_ON_A_SINGLE_LINE) || (charsOnALine == 0)){
 			//move cursor to the next line
 			hexString[hexIndex++] = '\r';
@@ -79,23 +82,10 @@ void displayHexDump(const void *buf, size_t nBytes){
 			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x000000F0) >> 4);
 			hexString[hexIndex++] = getNibble(((uint32_t)(startingLoc) & 0x0000000F));
 
-
 			//2 spaces in between address and data
 			hexString[hexIndex++] = ' ';
 			hexString[hexIndex++] = ' ';
 			charsOnALine = 0;
-
-
-			//store till 2 lines and print
-			if(isPrint == 0){
-				isPrint++;
-			}
-			else{
-				hexString[hexIndex++] = '\0';
-				printf("%s", hexString);
-				hexIndex = 0;
-				isPrint = 0;
-			}
 
 		}
 

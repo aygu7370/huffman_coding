@@ -20,6 +20,18 @@
 #define INVALID_HUFFMAN_SYMBOL                                  (0xFFFFFFFF)
 #define BITS_IN_A_BYTE											(8)
 
+//Huffman table: symbol, encoded messages and length of encoded messages
+typedef struct {
+	uint8_t symbol;
+	uint32_t code;
+	int nBits;
+} encode_huffmanCode_t;
+
+typedef struct {
+	uint8_t symbol;
+	char code[20];
+	int nBits;
+} decode_huffmanCode_t;
 
 /**************************************************************************
  * @name encodeHuffmanCode

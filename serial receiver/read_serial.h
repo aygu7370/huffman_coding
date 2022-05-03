@@ -51,3 +51,10 @@ int configureSerialPort(struct termios* tty);
  * @description decode the received message from serial port.
  *************************************************************************/
 void decodeMessages(int serialPort, char* msg, int msgLen);
+
+/**************************************************************************
+ * @name getStats
+ * 
+ * @description get Huffman stats.
+ *************************************************************************/
+void getStats();

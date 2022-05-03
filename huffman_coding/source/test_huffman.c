@@ -40,13 +40,13 @@ char huffmanInputs[NUMBER_OF_TEST_CASES][BUFFER_LENGTH+1] = {
     "ECEN>",                    //combination of alphabets and punctuation
     "abcdefghijklmnop",         //string with all unique character
     "Huffman Coding API for Final Project", //a normal debug message length
-    "random_script from my mind",
-    "FRDM KL25Z Development board",
-    "",
-    "1234567891011121314151617",
-    ":::::::::::::::::::::::::::::::::::",
-    "ahahhvdfbkr-ngrpgkfnjkd-lnfdjbf",
-    "KL25z -  a 32-bit micro-controller",
+    "random_script from my mind",	//normal string
+    "FRDM KL25Z Development board",	//normal string
+    "",								//blank string
+    "1234567891011121314151617",	//numbers
+    ":::::::::::::::::::::::::::::::::::", //punctualtion
+    "ahahhvdfbkr-ngrpgkfnjkd-lnfdjbf",		//alphanumeric string
+    "KL25z -  a 32-bit micro-controller"	//normal string
 };
 
 

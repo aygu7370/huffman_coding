@@ -19,22 +19,6 @@
 #define HUFFMAN_MAX_LENGTH              							(11)
 #define HUFFMAN_END_CODE_SYMBOL                                     ('\0')
 
-//Huffman table: symbol, encoded messages and length of encoded messages
-typedef struct {
-	uint8_t symbol;
-	uint32_t code;
-	int nBits;
-} encode_huffmanCode_t;
-
-typedef struct {
-	uint8_t symbol;
-	char code[20];
-	int nBits;
-} decode_huffmanCode_t;
-
-
-
-
 /**************************************************************************
  * @name encodeHuffman
  *

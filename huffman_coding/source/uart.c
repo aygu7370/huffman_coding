@@ -125,7 +125,7 @@ int __sys_write(int handle, char *buf, int size){
 		return size;
 	}
 
-	uint8_t data[256];
+	uint8_t data[512];
 
 	int nBytesStored = 0;
 	//wait if the TX Buffer is full.
@@ -160,19 +160,6 @@ int __sys_readc(void){
 		return ch;
 	}
 	return -1;
-}
-
-/*****************************************************************************************
- * @name: serialOut
- *
- * @description: Refer uart.h for more detail.
- *****************************************************************************************/
-void serialOut(void *buf, size_t count){
-	cbfifo_enqueue(buf, count, &txBuffer);
-	//Enable TIE flag, start transmitting passed string
-	if(!(UART0->C2 & UART0_C2_TIE_MASK)){
-		UART0->C2 |= UART0_C2_TIE(1);
-	}
 }
 
 /*****************************************************************************************
