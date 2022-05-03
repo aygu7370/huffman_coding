@@ -55,8 +55,8 @@ Currently, the serial port is working on <b>115200 Baud Rate, no parity and 1 st
 The test plan for verifying the Huffman implementation and integration is given in the [Test Plan](test_plan.xlsx).  
 
 Unit test cases were written to verify each step. Following are the tests that are executed on system start-up.
-1. Test Huffman Coding Implementation: If system is in ```DEBUG``` mode, test APIs will execute on the KL25Z, which will execute the Huffman Encoding and Decoding and uses assert statements while comparing the two results. 
-2. Test Circular Queue Implementation: If system is in ```DEBUG``` mode, test APIs will execute on the KL25Z, which will perform the various scenarios on Circular queue and uses assert statements while comparing the results. 
+1. Test Huffman Coding Implementation: If system is in ```DEBUG``` mode, [huffman test APIs](huffman_coding/source/test_huffman.c) will execute on the KL25Z, which will execute the Huffman Encoding and Decoding and uses assert statements while comparing the two results. 
+2. Test Circular Queue Implementation: If system is in ```DEBUG``` mode, [circular queue test APIs](huffman_coding/source/test_cbfifo.c) will execute on the KL25Z, which will perform the various scenarios on Circular queue and uses assert statements while comparing the results. 
    
    Once these tests are passed, the system proceeds to the command processor part.
 
