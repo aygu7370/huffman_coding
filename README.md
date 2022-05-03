@@ -73,7 +73,7 @@ Initial scope of this project was to implement the Huffman algorithm. As that pa
 
 4. A new command which is added to the system is ```compare```. Upon receiving this command the stats related to Huffman will be displayed on the terminal. Below is the picture depicting the same. 
 
-      ![cmd1](screenshots/compare_cmd.jpg)
+      ![cmd1](Screenshots/compare_cmd.jpg)
 
 ### Code Explanantion
 ![code_explanation](Documentation/code_explanation.mp4)
