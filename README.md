@@ -40,15 +40,15 @@ Currently, the serial port is working on <b>115200 Baud Rate, no parity and 1 st
 ## Software Flow Control
 1. System Overview: There is a program running on KL25z which will receive the commands from Serial Port (UART0) and process it. If the command is valid it will send its response back which will be encoded using the Huffman Algorithm. 
    Here is a high-level system overview.
-   ![overview](screenshots/pes3.png)
+   ![overview](Screenshots/pes3.png)
 
 2. KL25z: Encode the outgoing messages using HUFFMAN coding technique. The string is currently being compressed in the ```__sys_write``` function associated RedLib library. 
    
-   ![kl25z_software_flow](screenshots/pes1.png)
+   ![kl25z_software_flow](Screenshots/pes1.png)
    
 3. PC Front: On the serial front the data is being decompressed using the HUFFMAN TABLE (symbol, code & number of bits). If ```HUFFMAN_END_SYMBOL``` ('\0') is detected, the remaining bits are discarded. 
    
-   ![PC_software_flow](screenshots/pes2.png)
+   ![PC_software_flow](Screenshots/pes2.png)
 
 
 ### Test Results
@@ -65,11 +65,11 @@ Initial scope of this project was to implement the Huffman algorithm. As that pa
     
 3. The commands are kept as it is from assignment 6. Here are a few screenshots showing the working of various commands.
    
-   ![cmd1](screenshots/author_cmd.jpg)
+   ![cmd1](Screenshots/author_cmd.jpg)
 
-   ![cmd2](screenshots/dump_cmd.jpg)
+   ![cmd2](Screenshots/dump_cmd.jpg)
 
-   ![cmd1](screenshots/info_cmd.jpg)
+   ![cmd1](Screenshots/info_cmd.jpg)
 
 4. A new command which is added to the system is ```compare```. Upon receiving this command the stats related to Huffman will be displayed on the terminal. Below is the picture depicting the same. 
 
