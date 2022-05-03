@@ -14,6 +14,7 @@
 #define INVALID_HUFFMAN_SYMBOL                                  (0xFFFFFFFF)
 #define BITS_IN_A_BYTE                                          (8)
 
+//variables to keep a track of data incoming
 int countBytes = 0;
 int countDecodedBytes = 0;
 

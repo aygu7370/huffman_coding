@@ -31,8 +31,31 @@ The Project is divided into various submodules and then completed one step at a 
 ## Generation of Huffman Map Table
 A [python script](huffman%20code%20generator/huffman.py) is used to make the [huffman table for encoding](huffman%20code%20generator/encodeHuffman.txt) and [huffman table for decoding](huffman%20code%20generator/decodeHuffman.txt) using a [corpus](huffman%20code%20generator/corpus.txt). This process is very flexible to do. All the user has to add sentences in the [corpus](huffman%20code%20generator/corpus.txt) and run the python script. It is generate the huffman tree for both encode and decode end. User then has to replace the previous huffman tables with the latest huffman table.
 
+## Instructions
+There are 3 directories in this repository which a user should be aware of.
+1. huffman_coding: contains the KL25z software.
+      
+   To run the KL25z code, open the project in MCUExpresso, select huffman_coding from ```Project Exploler``` > right click and select debug as ```PEMicro Probes```.
+2. huffman code generator: this directory has the corpus file and the python script to create encodeHuffmanCode.txt and decodeHuffmanCode.txt which will all be available in this repository after creation.
+   
+   To run the python script, open terminal and go to this directory (ubuntu system), and run the following command. Make sure you have corpus.txt file in the same directory.
+
+         python3 huffman.py
+
+3. serial receiver: An Ubuntu based C scripts which communicates with KL25Z using serial port.
+   
+   To run the software, open terminal in ubuntu and go to this directory. Run the following commands to execute the program.
+
+         gcc read_serial.h read_serial.c main.c -o readSerial
+
+         ./readSerial
+
+<b>Note: Make sure you have readSerial executable running on the ubuntu before starting with KL25Z. The program starts when KL25Z sends a dummy string to the PC. </b>
+
+
 ## Configuring the Serial Port
 KL25z: The macro ```BAUD_RATE``` present in ```uart.h``` can easily be configured to work with any Baud Rate.
+
 Ubuntu: The macro ```SERIAL_PORT_KL25Z``` to set the serial port (in my case: /dev/ttyS8) and ```BAUD_RATE``` (in my case B115200) to configure the serial port.
 
 Currently, the serial port is working on <b>115200 Baud Rate, no parity and 1 stop bit mode</b>. 

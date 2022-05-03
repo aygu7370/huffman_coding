@@ -46,6 +46,7 @@ int main() {
     printf("%s", msg);
     memset(msg, 0 , RECEIVED_MESSAGE_LENGTH);
 
+    //user message string
     char userInput[USER_MESSAGE_LENGTH];
     int userIndex = 0;
     char ch;
@@ -76,10 +77,11 @@ int main() {
             getStats();
         }
         else{
+            //added \r\n at the end of the string for decoding on the kl25z
             userInput[userIndex++] = '\r';
             userInput[userIndex++] = '\n';
 
-            
+            //initialize counters = 0
             int countWriteBytes = 0;
             int msgLength = strlen(userInput);
 
