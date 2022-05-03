@@ -52,6 +52,13 @@ There are 3 directories in this repository which a user should be aware of.
 
 <b>Note: Make sure you have readSerial executable running on the ubuntu before starting with KL25Z. The program starts when KL25Z sends a dummy string to the PC. </b>
 
+## Functionalities
+1. Following commands are present in the system.
+   1. Author: returns the name of the author.
+   2. dump <start address> <end address>: returns the hexdump of data from requested memory.
+   3. info: return a string in the format "Version 1.0 built on <hostname> at <YYYY-MM-DD_HH:mm:ss> Commit <commit_id>"
+   4. compare: Huffman compression stats 
+2. Huffman code generator to generate HUFFMAN encode and decode tables. 
 
 ## Configuring the Serial Port
 KL25z: The macro ```BAUD_RATE``` present in ```uart.h``` can easily be configured to work with any Baud Rate.
