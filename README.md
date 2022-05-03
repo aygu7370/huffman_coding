@@ -31,6 +31,9 @@ The Project is divided into various submodules and then completed one step at a 
 ## Generation of Huffman Map Table
 A [python script](huffman%20code%20generator/huffman.py) is used to make the [huffman table for encoding](huffman%20code%20generator/encodeHuffman.txt) and [huffman table for decoding](huffman%20code%20generator/decodeHuffman.txt) using a [corpus](huffman%20code%20generator/corpus.txt). This process is very flexible to do. All the user has to add sentences in the [corpus](huffman%20code%20generator/corpus.txt) and run the python script. It is generate the huffman tree for both encode and decode end. User then has to replace the previous huffman tables with the latest huffman table.
 
+## Project Scope
+  All the functionalities which were proposed during the [Project Proposal](AyushGupta_ProjectProposal.pdf) have been completed. Apart from that, on the top of proposed huffman algorithm I have integrated it with assignment 6 command processor.
+
 ## Instructions
 There are 3 directories in this repository which a user should be aware of.
 1. huffman_coding: contains the KL25z software.
@@ -59,6 +62,10 @@ There are 3 directories in this repository which a user should be aware of.
    3. info: return a string in the format "Version 1.0 built on <hostname> at <YYYY-MM-DD_HH:mm:ss> Commit <commit_id>"
    4. compare: Huffman compression stats 
 2. Huffman code generator to generate HUFFMAN encode and decode tables. 
+3. Develop Huffman algorithm and gluing up with Redlib library to compress data and clearly demonstrate the data compression advantages (in form of a compression statistic).
+4. Will develop a C program on the receiving end (PC) to receive debug messages over UART to decode 
+the received message and match it with the expected output. This program could also keep track of 
+compression statistics, since it can track bytes in and bytes out
 
 ## Configuring the Serial Port
 KL25z: The macro ```BAUD_RATE``` present in ```uart.h``` can easily be configured to work with any Baud Rate.
